@@ -18,7 +18,7 @@ class CreateTodosTable extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('comment',100);
-            $table->boolean('status')->unsigned()->default(1);
+            $table->boolean('status')->unsigned()->default(0);
             $table->timestamps();
         });
     }

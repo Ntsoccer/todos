@@ -18,4 +18,6 @@ Route::get('/', function () {
 Route::group(['prefix'=>'todo'],function(){
   Route::get('index','TodoController@index')->name('todo.index');
   Route::post('store','TodoController@store')->name('todo.store');
+  Route::post('update/{id}','TodoController@update')->name('todo.update');
+  Route::post('destroy/{id}','TodoController@destroy')->name('todo.destroy');
 });
