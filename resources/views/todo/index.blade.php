@@ -21,17 +21,17 @@
   @foreach($todos as $todo)
   <tbody>
     <tr>
-      <td>{{$loop->index+1}}</td>
+      <td>{{$loop->iteration}}</td>
       <td>{{$todo->comment}}</td>
 
       <td>
         <form method="POST" action="{{route('todo.update',['id'=>$todo->id])}}">
           @csrf
           @if($todo->status===0)
-          <button type="submit" class="todo0">作業中</button>
+          <button type="submit" class="work">作業中</button>
           @endif
           @if($todo->status===1)
-          <button type="submit" class="todo1">完了</button>
+          <button type="submit" class="done">完了</button>
           @endif
       </td>
       </form>

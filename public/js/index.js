@@ -1,37 +1,67 @@
 const radio0 = document.getElementById('radio0');
 const radio1 = document.getElementById('radio1');
 const radio2 = document.getElementById('radio2');
-const todo0s = document.querySelectorAll('.todo0');
-const todo1s = document.querySelectorAll('.todo1');
-// const todo0 = todo0s.parentNode;
-// console.log(todo0);
+const works = document.getElementsByClassName('work');
+const dones = document.getElementsByClassName('done');
+
 radio0.addEventListener('change', () => {
-  todo0s.forEach(todo0 => {
-    const todo0Parent = todo0.closest('tr');
-    todo0Parent.style.display = "";
-  })
-  todo1s.forEach(todo1 => {
-    const todo1Parent = todo1.closest('tr');
-    todo1Parent.style.display = "";
-  })
+  for (let i = 0; i < works.length; i++) {
+    const workParent = works[i].closest('tr');
+    workParent.style.display = "";
+  }
+  for (let i = 0; i < dones.length; i++) {
+    const doneParent = dones[i].closest('tr');
+    doneParent.style.display = "";
+  }
 })
 radio1.addEventListener('change', () => {
-  todo0s.forEach(todo0 => {
-    const todo0Parent = todo0.closest('tr');
-    todo0Parent.style.display = "";
-  })
-  todo1s.forEach(todo1 => {
-    const todo1Parent = todo1.closest('tr');
-    todo1Parent.style.display = "none";
-  })
+  for (let i = 0; i < works.length; i++) {
+    const workParent = works[i].closest('tr');
+    workParent.style.display = "";
+  }
+  for (let i = 0; i < dones.length; i++) {
+    const doneParent = dones[i].closest('tr');
+    doneParent.style.display = "none";
+  }
 })
 radio2.addEventListener('change', () => {
-  todo0s.forEach(todo0 => {
-    const todo0Parent = todo0.closest('tr');
-    todo0Parent.style.display = "none"
-  })
-  todo1s.forEach(todo1 => {
-    const todo1Parent = todo1.closest('tr');
-    todo1Parent.style.display = ""
-  })
+  for (let i = 0; i < works.length; i++) {
+    const workParent = works[i].closest('tr');
+    workParent.style.display = "none";
+  }
+  for (let i = 0; i < dones.length; i++) {
+    const doneParent = dones[i].closest('tr');
+    doneParent.style.display = "";
+  }
 })
+
+// radio0.addEventListener('change', () => {
+//   works.forEach(work => {
+//     const workParent = work.closest('tr');
+//     workParent.style.display = "";
+//   })
+//   dones.forEach(done => {
+//     const doneParent = done.closest('tr');
+//     doneParent.style.display = "";
+//   })
+// })
+// radio1.addEventListener('change', () => {
+//   works.forEach(work => {
+//     const workParent = work.closest('tr');
+//     workParent.style.display = "";
+//   })
+//   dones.forEach(done => {
+//     const doneParent = done.closest('tr');
+//     doneParent.style.display = "none";
+//   })
+// })
+// radio2.addEventListener('change', () => {
+//   works.forEach(work => {
+//     const workParent = work.closest('tr');
+//     workParent.style.display = "none"
+//   })
+//   dones.forEach(done => {
+//     const doneParent = done.closest('tr');
+//     doneParent.style.display = ""
+//   })
+// })

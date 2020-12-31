@@ -72,7 +72,7 @@ class TodoController extends Controller
     
         $todo->save();
 
-        return redirect('todo');
+        return redirect('todo/main');
     }
 
     /**
@@ -117,7 +117,7 @@ class TodoController extends Controller
           $todo->save();
         };
         
-        return redirect('todo');
+        return redirect('todo/main');
     }
 
     /**
@@ -131,8 +131,6 @@ class TodoController extends Controller
         //
         $todo=Todo::find($id);
         $todo->delete();
-        // $todo=DB::table('todos')
-        // ->where('id',$request->id)->delete();
-        return redirect('todo');
+        return redirect('todo/main');
     }
 }
