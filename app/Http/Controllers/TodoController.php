@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 use Validator;
 
+use App\Http\Requests\StoreTodo;
+
 class TodoController extends Controller
 {
     /**
@@ -62,24 +64,15 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {   
-        $rules=['comment'=>'required|max:100'];
-        $messages=['comment.max'=>'100文字以内で記入してください。'];
-        $validator=Validator::make($request->all(),$rules,$messages);
-        if($validator->fails()){
-          return redirect('todo/index')
-          ->withErrors($validator)
-          ->withInput();
-        }
-
+    public function store(StoreTodo $request)
+    {  
         $todo=new Todo;
         
         $todo->comment=$request->comment;
     
         $todo->save();
 
-        return redirect('todo/index');
+        return redirect('todo');
     }
 
     /**
@@ -124,7 +117,7 @@ class TodoController extends Controller
           $todo->save();
         };
         
-        return redirect('todo/index');
+        return redirect('todo');
     }
 
     /**
@@ -138,6 +131,8 @@ class TodoController extends Controller
         //
         $todo=Todo::find($id);
         $todo->delete();
-        return redirect('todo/index');
+        // $todo=DB::table('todos')
+        // ->where('id',$request->id)->delete();
+        return redirect('todo');
     }
 }

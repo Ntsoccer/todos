@@ -20,30 +20,21 @@
   </thead>
   @foreach($todos as $todo)
   <tbody>
-    @if($todo->status===0)
-    <tr class="todo0">
-      @elseif($todo->status===1)
-    <tr class="todo1">
-      @endif
-      <td>{{$todo->id}}</td>
+    <tr>
+      <td>{{$loop->index+1}}</td>
       <td>{{$todo->comment}}</td>
-      @if($todo->status===0)
+
       <td>
         <form method="POST" action="{{route('todo.update',['id'=>$todo->id])}}">
           @csrf
-          <button type="submit">作業中</button>
+          @if($todo->status===0)
+          <button type="submit" class="todo0">作業中</button>
+          @endif
+          @if($todo->status===1)
+          <button type="submit" class="todo1">完了</button>
+          @endif
       </td>
       </form>
-
-      @endif
-      @if($todo->status===1)
-      <td>
-        <form method="POST" action="{{route('todo.update',['id'=>$todo->id])}}">
-          @csrf
-          <button type="submit">完了</button>
-        </form>
-      </td>
-      @endif
       <td>
         <form action="{{route('todo.destroy',['id'=>$todo->id])}}" method="POST">
           @csrf
@@ -66,35 +57,4 @@
   <input type="text" name="comment">
   <button type="submit" name="btn">追加</button>
 </form>
-<script>
-let radio0 = document.getElementById('radio0');
-let radio1 = document.getElementById('radio1');
-let radio2 = document.getElementById('radio2');
-let todo0s = document.querySelectorAll('.todo0');
-let todo1s = document.querySelectorAll('.todo1');
-radio0.addEventListener('change', () => {
-  todo0s.forEach(todo0 => {
-    todo0.style.display = ""
-  })
-  todo1s.forEach(todo1 => {
-    todo1.style.display = ""
-  })
-})
-radio1.addEventListener('change', () => {
-  todo0s.forEach(todo0 => {
-    todo0.style.display = ""
-  })
-  todo1s.forEach(todo1 => {
-    todo1.style.display = "none"
-  })
-})
-radio2.addEventListener('change', () => {
-  todo0s.forEach(todo0 => {
-    todo0.style.display = "none"
-  })
-  todo1s.forEach(todo1 => {
-    todo1.style.display = ""
-  })
-})
-</script>
 @endsection
