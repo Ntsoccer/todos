@@ -3,7 +3,7 @@
 @section('content')
 <div class="form-check form-check-inline">
   <!-- <form action="{{route('todo.index')}}" method="get"> -->
-  <input id="radio0" type="radio" class="form-check-input" name="search" value="0">すべて</input>
+  <input id="radio0" type="radio" class="form-check-input" name="search" value="0" checked>すべて</input>
   <input id="radio1" type="radio" class="form-check-input" name="search" value="1">作業中</input>
   <input id="radio2" type="radio" class="form-check-input" name="search" value="2">完了</input>
   <!-- <button type="submit">検索</button> -->
